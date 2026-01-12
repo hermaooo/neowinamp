@@ -1,0 +1,22 @@
+{
+  "name": "neo-winamp-controller",
+  "version": "1.0.0",
+  "description": "Retro controller for Spotify, YouTube and System Audio",
+  "main": "src/main/main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "Enzo Hermes",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.2.0",
+    "electron-builder": "^24.9.1"
+  },
+  "dependencies": {
+    "webamp": "^1.4.2",
+    "yt-dlp-exec": "^1.0.2",
+    "yt-search": "^2.13.1"
+  }
+}

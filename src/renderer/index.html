@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Neo-Winamp</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div id="winamp-container"></div>
+
+    <!-- BIBLIOTECA YOUTUBE -->
+    <div id="media-library" class="hidden">
+        <div class="library-header">
+            <span>YOUTUBE LIBRARY</span>
+            <div class="header-buttons">
+                <button id="settings-btn" class="toggle-image-button" title="Configurações">
+                    <img class="icon-normal" src="../../assets/icons/settings-normal.png" alt="Settings">
+                    <img class="icon-pressed" src="../../assets/icons/settings-pressed.png" alt="Settings" style="display: none;">
+                </button>
+
+                <button id="close-lib" class="toggle-image-button">
+                    <img class="icon-normal" src="../../assets/icons/close-normal.png" alt="Close">
+                    <img class="icon-pressed" src="../../assets/icons/close-pressed.png" alt="Close" style="display: none;">
+                </button>
+            </div>
+        </div>
+        
+        <div class="bar-outline">
+            <div class="search-bar">
+                <input type="text" id="yt-search" placeholder="Buscar música..." autocomplete="off">
+                <button id="btn-search" class="toggle-image-button" title="Buscar">                    
+                    <img class="icon-normal" src="../../assets/icons/search-normal.png" alt="Search">
+                    <img class="icon-pressed" src="../../assets/icons/search-pressed.png" alt="Search" style="display: none;">
+                </button>
+            </div>
+        
+            <div class="library-content">
+                <ul id="playlist-tree">
+                    <li>Digite para buscar...</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Barra de ações com seleção múltipla -->
+        <div class="selection-bar hidden" id="selection-bar">
+            <div class="selection-info">
+                <span id="selected-count">0 selecionadas</span>
+            </div>
+            <div class="selection-actions">
+                <button id="clear-selection">Limpar</button>
+                <button id="add-to-playlist" class="primary-action">Adicionar à Playlist</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TELA DE LOADING -->
+    <div id="loading-screen" class="hidden">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <div class="loading-text" id="loading-text">Carregando áudio...</div>
+            <div class="loading-details" id="loading-details"></div>
+        </div>
+    </div>
+
+    <!-- PAINEL DE CONFIGURAÇÕES -->
+    <div id="settings-panel" class="hidden">
+        <div class="settings-header">
+            <span>CONFIGURAÇÕES</span>
+            <button id="close-settings">X</button>
+        </div>
+        
+        <div class="settings-content">
+            
+            <!-- SEÇÃO: QUALIDADE DE ÁUDIO -->
+            <div class="settings-section">
+                <h3>Qualidade de Áudio</h3>
+                <label>
+                    <span>Formato preferido:</span>
+                    <select id="audio-quality">
+                        <option value="bestaudio">Melhor Qualidade</option>
+                        <option value="bestaudio[ext=m4a]">M4A (AAC)</option>
+                        <option value="bestaudio[ext=mp3]">MP3</option>
+                        <option value="worstaudio">Economia de Dados</option>
+                    </select>
+                </label>
+            </div>
+
+            <!-- SEÇÃO: INTERFACE -->
+            <div class="settings-section">
+                <h3>Interface</h3>
+                
+                <label class="checkbox-label">
+                    <input type="checkbox" id="auto-close-selector" checked>
+                    <span>Fechar seletor após adicionar à playlist</span>
+                </label>
+                
+                <label class="checkbox-label">
+                    <input type="checkbox" id="show-warnings" checked>
+                    <span>Mostrar avisos de vídeos bloqueados</span>
+                </label>
+                
+                <label class="checkbox-label">
+                    <input type="checkbox" id="auto-play" checked>
+                    <span>Reproduzir automaticamente após adicionar</span>
+                </label>
+            </div>
+
+            <!-- SEÇÃO: REPRODUÇÃO -->
+            <div class="settings-section">
+                <h3>Reprodução</h3>
+                
+                <label>
+                    <span>Limite de resultados:</span>
+                    <select id="results-limit">
+                        <option value="10">10 resultados</option>
+                        <option value="25" selected>25 resultados</option>
+                        <option value="50">50 resultados</option>
+                    </select>
+                </label>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" id="prefer-direct-stream">
+                    <span>Sempre usar stream direto (mais lento)</span>
+                </label>
+            </div>
+
+            <!-- BOTÕES -->
+            <div class="settings-section">
+                <button id="reset-settings" class="danger-btn">Resetar Configurações</button>
+            </div>
+
+            <div class="settings-footer">
+                <p>Neo-Winamp v1.0.0</p>
+                <p>Pressione CTRL+L para abrir/fechar</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Player YouTube Oculto -->
+    <div id="youtube-hidden-player" style="position: fixed; top: -9999px; left: -9999px; width: 640px; height: 480px;"></div>
+    
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="app.js"></script>
+</body>
+</html>
